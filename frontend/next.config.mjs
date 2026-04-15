@@ -2,7 +2,7 @@
 const nextConfig = {
   // Enable production optimizations
   reactStrictMode: true,
-  swcMinify: true,
+  // swcMinify: true,
   serverExternalPackages: ['mongoose'],
   // For containerized deployments with Docker
   output: 'standalone',
