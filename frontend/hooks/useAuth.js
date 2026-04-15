@@ -74,6 +74,10 @@ export function useAuth() {
     localStorage.removeItem("isAuthenticated");
     localStorage.removeItem("userData");
     
+    // Clear specific cookie that middleware relies upon 
+    document.cookie = "token=; path=/; max-age=0; samesite=lax";
+    document.cookie = "user_jwt=; path=/; max-age=0; samesite=lax";
+    
     // Update state
     setIsAuthenticated(false);
     setUserRole(null);

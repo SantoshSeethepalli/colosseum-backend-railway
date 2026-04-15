@@ -74,6 +74,10 @@ useEffect(() => {
           localStorage.setItem("userRole", role);
           localStorage.setItem("isAuthenticated", "true");
           
+          // IMPORTANT: Set token in document.cookie so Next.js middleware can read it immediately 
+          // before the router.push() executes! (Cross-domain APIs cookies might be blocked)
+          document.cookie = `token=${responseData.token}; path=/; max-age=86400; samesite=lax`;
+          
           // Store any additional user data if available
           if (responseData.user) {
             localStorage.setItem("userData", JSON.stringify(responseData.user));
@@ -99,7 +103,12 @@ useEffect(() => {
         }
       } else {
         console.error("Error response:", responseData);
-        setErrorMessage(responseData.errorMessage || "Something went wrong.");
+        setErrorMessage(
+          responseData.errorMessage || 
+          responseData.error || 
+          responseData.message || 
+          "Something went wrong."
+        );
       }
     } catch (error) {
       console.error("Error during submission:", error);
