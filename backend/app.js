@@ -45,6 +45,7 @@ const allowedOrigins = [
   'https://colosseum-git-main-vihaans-projects.vercel.app',
   'https://colosseum-phi.vercel.app',
   'https://amazing-marcelline-vihaan-that-7f7a6fb0.koyeb.app',
+  'https://positive-enjoyment-production-0044.up.railway.app', // Added new railway frontend URL
   // Add any other frontend domains here
   
 ];
